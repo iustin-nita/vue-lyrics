@@ -20,11 +20,11 @@ const userSchema = Schema({
   password: {
     type: String,
     required: true,
-  },
-  passwordConf: {
-    type: String,
-    required: true,
   }
+  // passwordConf: {
+  //   type: String,
+  //   required: true,
+  // }
   // One to many relationship
   // song: { type: ObjectId, ref: 'Song' }
 });

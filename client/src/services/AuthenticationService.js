@@ -2,7 +2,6 @@ import Api from '@/services/Api'
 
 export default {
   register (credentials) {
-    console.log(credentials)
-    return Api().post('/api/users', credentials)
+    return Api().post('/users', credentials)
   }
 }

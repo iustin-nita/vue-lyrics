@@ -46,7 +46,7 @@ app.all('/*', function (req, res, next) {
 // app.set('view engine', 'ejs');
 
 // Configure middlewares
-app.use(logger('dev'));
+// app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
