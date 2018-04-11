@@ -7,7 +7,7 @@ const userController = {
     User.find({})
       // alongside it's manufacturer
       // information
-      .populate('manufacturer')
+      .populate('song')
       .exec((err, users) => res.json(users))
   },
   byId(req, res) {
@@ -26,14 +26,15 @@ const userController = {
     const newUser = new User(requestBody);
     // and saves the record to
     // the data base
-    newUser.save((err, saved) => {
-      // Returns the saved user
-      // after a successful save
-      // User
-      //   .findOne({ _id: saved._id })
-      //   .populate('song')
-      //   .exec((err, user) => res.json(user));
-    })
+    newUser.save((err, user) => {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      } else {
+        console.log('success', res);
+        res.send(user);
+      }
+    });
   },
   update(req, res) {
     const idParam = req.params.id;
