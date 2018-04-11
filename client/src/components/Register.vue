@@ -6,7 +6,8 @@
     <el-input v-model="password" type="password" name="password" placeholder="Password"></el-input>
     <br>
     <div v-html="error"></div>
-    <button type="submit" @click="register()">Register</button>
+    <el-button type="primary" @click="register()">Register</el-button>
+    
   </div>
 </template>
 
