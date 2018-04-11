@@ -1,9 +1,9 @@
 <template>
   <div>
     <h1>Register</h1>
-    <input v-model="email" type="email" name="email" placeholder="Email"/>
-    <input v-model="username" type="text" name="username" placeholder="Username"/>
-    <input v-model="password" type="password" name="password" placeholder="Password"/>
+    <el-input v-model="email" type="email" name="email" placeholder="Email"></el-input>
+    <el-input v-model="username" type="text" name="username" placeholder="Username"></el-input>
+    <el-input v-model="password" type="password" name="password" placeholder="Password"></el-input>
     <br>
     <div v-html="error"></div>
     <button type="submit" @click="register()">Register</button>
