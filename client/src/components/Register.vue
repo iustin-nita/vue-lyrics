@@ -1,9 +1,9 @@
 <template>
   <div>
     <h1>Register</h1>
-    <el-input v-model="email" type="email" name="email" placeholder="Email"></el-input>
-    <el-input v-model="username" type="text" name="username" placeholder="Username"></el-input>
-    <el-input v-model="password" type="password" name="password" placeholder="Password"></el-input>
+    <input v-model="email" type="email" name="email" placeholder="Email"/>>
+    <input v-model="username" type="text" name="username" placeholder="Username"/>
+    <input v-model="password" type="password" name="password" placeholder="Password"/>
     <br>
     <div v-html="error"></div>
     <el-button type="primary" @click="register()">Register</el-button>
@@ -12,30 +12,35 @@
 </template>
 
 <script>
-import AuthenticationService from '@/services/AuthenticationService'
+import { auth } from '@/firebase'
 export default {
   name: 'Register',
   data () {
     return {
       email: '',
-      username: '',
       password: '',
       error: null
     } 
   },
   methods: {
     register () { 
-        AuthenticationService.register({
-          email: this.email,
-          username: this.username,
-          password: this.password
-        }).then((response) => {
-          if (response.data.message) {
-          this.error = response.data.message;
-          } else {
-            console.log(success);
-          }
-        })
+        const {
+          email,
+          password,
+        } = this;
+
+        console.log(email, password);
+
+        auth.doCreateUserWithEmailAndPassword(email, password)
+          .then(authUser => {
+            console.log("NEW USER", authUser)
+          })
+          .catch(error => {
+            this.error = error.message;
+            console.log('error', error);
+          });
+
+        event.preventDefault();
     }
   }
 
