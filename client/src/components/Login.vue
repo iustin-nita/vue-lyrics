@@ -2,7 +2,6 @@
   <div>
     <h1>Log in</h1>
     <el-input v-model="email" type="email" name="email" placeholder="Email"></el-input>
-    <el-input v-model="username" type="text" name="username" placeholder="Username"></el-input>
     <el-input v-model="password" type="password" name="password" placeholder="Password"></el-input>
     <br>
     <div v-html="error"></div>
@@ -12,20 +11,34 @@
 </template>
 
 <script>
-import AuthenticationService from '@/services/AuthenticationService'
+import { auth } from '@/firebase'
 export default {
   name: 'Login',
   data () {
     return {
       email: '',
-      username: '',
       password: '',
       error: null
     } 
   },
   methods: {
     login () { 
+      const {
+      email,
+      password,
+    } = this;
+
+    auth.doSignInWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log("login successful");
         this.$router.replace('/');
+      })
+      .catch(error => {
+        console.log('error', error);
+        this.error = error;
+      });
+
+    event.preventDefault();
     }
   }
 

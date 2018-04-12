@@ -2,17 +2,15 @@
   <div>
     <h1>Register</h1>
     <input v-model="email" type="email" name="email" placeholder="Email"/>>
-    <input v-model="username" type="text" name="username" placeholder="Username"/>
     <input v-model="password" type="password" name="password" placeholder="Password"/>
     <br>
     <div v-html="error"></div>
     <el-button type="primary" @click="register()">Register</el-button>
-    
+    <div id="firebaseui-auth-container"></div>
   </div>
 </template>
 
 <script>
-import { auth } from '@/firebase'
 export default {
   name: 'Register',
   data () {
